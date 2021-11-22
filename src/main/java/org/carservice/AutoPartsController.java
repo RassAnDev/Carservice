@@ -13,7 +13,7 @@ import java.util.List;
 * to be exposed as RESTful APIs, for example reading JSON data from the request
 * and including JSON data to the response.
 * And this REST controller still takes advantages of Spring’s dependency injection
-* (an instance of ProductService is autowired).
+* (an instance of AutoPartsService is autowired).
 */
 
 @RestController
