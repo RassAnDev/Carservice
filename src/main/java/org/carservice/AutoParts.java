@@ -6,11 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-/*
-* Create the Domain Model Class(org.carservice.AutoParts) to map with the auto_parts table in the database.
-* This is a simple domain model class, with class name and field names are identical
-* to table name and column names in the database. It needs for the minimum number of JPA annotations.
-*/
+/**
+ * Create the Domain Model Class(org.carservice.AutoParts) to map with the "auto_parts" table in the database.
+ * This is a simple domain model class, with class name and field names are identical
+ * to table name and column names in the database. It needs for the minimum number of JPA annotations.
+ */
+
 @Entity
 public class AutoParts {
     private Integer autoPartId;
@@ -24,7 +25,6 @@ public class AutoParts {
     private double markupAmount;
 
     public AutoParts() {
-
     }
 
     public AutoParts(Integer autoPartId, Integer workOrderId, Date purchaseDate,String autoPartName,

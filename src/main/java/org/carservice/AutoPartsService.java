@@ -6,18 +6,17 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
-/*
-* Create the org.carservice.AutoPartsService class that acts as a middle layer
-* between persistence layer (repository) and controller layer.
-* This service class simply forwards the calls to an implementation of the org.carservice.AutoPartsRepository interface.
-* In addition, all the methods are executed in transactions
-* because this class is marked with the @Transactional annotation.
-*/
+/**
+ * Create the org.carservice.AutoPartsService class that acts as a middle layer
+ * between persistence layer (repository) and controller layer.
+ * This service class simply forwards the calls to an implementation of the org.carservice.AutoPartsRepository interface.
+ * In addition, all the methods are executed in transactions
+ * because this class is marked with the @Transactional annotation.
+ */
 
 @Service
 @Transactional
 public class AutoPartsService {
-
     @Autowired
     private AutoPartsRepository repo;
 
