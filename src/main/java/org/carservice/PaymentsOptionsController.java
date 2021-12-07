@@ -8,16 +8,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Create the org.carservice.Users class.
+ * Create the org.carservice.PaymentsOptionsController class.
+ * This is a Spring Controller following REST style.
  */
 
 @RestController
-public class UsersController {
+public class PaymentsOptionsController {
     @Autowired
-    private UsersService service;
+    private PaymentsOptionsService service;
 
-    @GetMapping("/users")
-    public List<Users> list() {
+    @GetMapping("/paymentsoptions")
+    public List<PaymentsOptions> list() {
         return service.listAll();
     }
+
 }
