@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Create the Domain Model Class(org.carservice.OrganizationsExecutors) to map with the "auto_parts" table in the database.
+ * Create the Domain Model Class(org.carservice.OrganizationsExecutors) to map with the "organizations_executors" table in the database.
  */
 
 @Entity
