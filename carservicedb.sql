@@ -68,7 +68,7 @@ firstname VARCHAR(100) NOT NULL,
 patronymic VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE work_order (
+CREATE TABLE work_orders (
 work_order_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 client_id INT,
 car_id INT,
@@ -192,7 +192,7 @@ VALUES
 ('2021-08-11', 'Амортизатор передний', 'D888C', 'Аркона', '3300.00', '4000.00', '700.00'),
 ('2021-08-10', 'Колодки тормозные задние', 'A999D', 'Емекс', '1200.00','1600.00', '400.00');
 
-INSERT work_order (work_order_number, startdate, enddate, work_quantity, work_amount,
+INSERT work_orders (work_order_number, startdate, enddate, work_quantity, work_amount,
 auto_part_quantity, auto_part_amount, discount_on_work, total_cost, wage_percentage, recommendation)
 VALUES
 ('1', '2021-08-11 16:00:00', '2021-08-11 19:00:00', '1', '800.00', '1', '1000.00', '5.00',
