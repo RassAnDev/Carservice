@@ -1,10 +1,12 @@
 package org.carservice.autoparts;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Create the org.carservice.autoparts.AutoPartsController class.
@@ -24,6 +26,37 @@ public class AutoPartsController {
     @GetMapping("/autoparts")
     public List<AutoParts> list() {
         return service.listAll();
+    }
+
+    @GetMapping("/autoparts/{id}")
+    public ResponseEntity<AutoParts> get(@PathVariable Integer id) {
+        try {
+            AutoParts autoParts = service.get(id);
+            return new ResponseEntity<AutoParts>(autoParts, HttpStatus.OK);
+        } catch(NoSuchElementException e) {
+            return new ResponseEntity<AutoParts>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/autoparts")
+    public void add(@RequestBody AutoParts autoParts) {
+        service.save(autoParts);
+    }
+
+    @PutMapping("/autoparts/{id}")
+    public ResponseEntity<?> update(@RequestBody AutoParts autoParts, @PathVariable Integer id) {
+        try {
+            AutoParts existAutoPart = service.get(id);
+            service.save(autoParts);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch(NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/autoparts/{id}")
+    public void delete(@PathVariable Integer id) {
+        service.delete(id);
     }
 
 }
