@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -29,12 +30,11 @@ public class AutoPartsController {
     }
 
     @GetMapping("/autoparts/{id}")
-    public ResponseEntity<AutoParts> get(@PathVariable Integer id) {
+    public AutoParts get(@PathVariable Integer id) {
         try {
-            AutoParts autoParts = service.get(id);
-            return new ResponseEntity<AutoParts>(autoParts, HttpStatus.OK);
+            return service.get(id);
         } catch(NoSuchElementException e) {
-            return new ResponseEntity<AutoParts>(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "NO_DATA ON ID", e);
         }
     }
 
@@ -47,7 +47,21 @@ public class AutoPartsController {
     public ResponseEntity<?> update(@RequestBody AutoParts autoParts, @PathVariable Integer id) {
         try {
             AutoParts existAutoPart = service.get(id);
-            service.save(autoParts);
+            existAutoPart.setAutoPartId(autoParts.getAutoPartId());
+            existAutoPart.setWorkOrderId(autoParts.getWorkOrderId());
+            existAutoPart.setPurchaseDate(autoParts.getPurchaseDate());
+            existAutoPart.setAutoPartName(autoParts.getAutoPartName());
+            existAutoPart.setCatalogueNumber(autoParts.getCatalogueNumber());
+            existAutoPart.setSupplierName(autoParts.getSupplierName());
+            existAutoPart.setWholesaleUnitPrice(autoParts.getWholesaleUnitPrice());
+            existAutoPart.setUnitRetailPrice(autoParts.getUnitRetailPrice());
+            existAutoPart.setMarkupAmount(autoParts.getMarkupAmount());
+
+            if(existAutoPart.equals(id)) {
+                service.save(autoParts);
+            } else {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
             return new ResponseEntity<>(HttpStatus.OK);
         } catch(NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
