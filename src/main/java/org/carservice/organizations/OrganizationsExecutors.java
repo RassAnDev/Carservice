@@ -13,7 +13,7 @@ import javax.persistence.Id;
 public class OrganizationsExecutors {
     private Integer organizationExecutorId;
     private String nameOfCompany;
-    private String legalAdress;
+    private String legalAddress;
     private String taxpayerNumber;
     private String registrationReasonCode;
     private String stateRegistrationNumber;
@@ -22,12 +22,12 @@ public class OrganizationsExecutors {
     public OrganizationsExecutors() {
     }
 
-    public OrganizationsExecutors(Integer organizationExecutorId, String nameOfCompany, String legalAdress,
+    public OrganizationsExecutors(Integer organizationExecutorId, String nameOfCompany, String legalAddress,
                                   String taxpayerNumber, String registrationReasonCode, String stateRegistrationNumber,
                                   String bankDetails) {
         this.organizationExecutorId = organizationExecutorId;
         this.nameOfCompany = nameOfCompany;
-        this.legalAdress = legalAdress;
+        this.legalAddress = legalAddress;
         this.taxpayerNumber = taxpayerNumber;
         this.registrationReasonCode = registrationReasonCode;
         this.stateRegistrationNumber = stateRegistrationNumber;
@@ -52,12 +52,12 @@ public class OrganizationsExecutors {
         return nameOfCompany;
     }
 
-    public void setLegalAdress(String legalAdress) {
-        this.legalAdress = legalAdress;
+    public void setLegalAddress(String legalAddress) {
+        this.legalAddress = legalAddress;
     }
 
-    public String getLegalAdress() {
-        return legalAdress;
+    public String getLegalAddress() {
+        return legalAddress;
     }
 
     public void setTaxpayerNumber(String taxpayerNumber) {
