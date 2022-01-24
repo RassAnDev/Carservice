@@ -34,7 +34,7 @@ public class AutoPartsController {
         try {
             return service.get(id);
         } catch(NoSuchElementException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "NO_DATA ON ID", e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "NO_DATA_ON_THIS_ID", e);
         }
     }
 
@@ -57,11 +57,8 @@ public class AutoPartsController {
             existAutoPart.setUnitRetailPrice(autoParts.getUnitRetailPrice());
             existAutoPart.setMarkupAmount(autoParts.getMarkupAmount());
 
-            if(existAutoPart.equals(id)) {
-                service.save(autoParts);
-            } else {
-                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-            }
+            service.save(autoParts);
+
             return new ResponseEntity<>(HttpStatus.OK);
         } catch(NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
