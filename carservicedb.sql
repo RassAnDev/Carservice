@@ -100,7 +100,7 @@ client_id INT,
 work_order_id INT,
 FOREIGN KEY (organization_executor_id) REFERENCES organizations_executors (organization_executor_id) ON DELETE CASCADE,
 FOREIGN KEY (client_id) REFERENCES clients (client_id) ON DELETE CASCADE,
-FOREIGN KEY (work_order_id) REFERENCES work_order (work_order_id) ON DELETE CASCADE
+FOREIGN KEY (work_order_id) REFERENCES work_orders (work_order_id) ON DELETE CASCADE
 );
 
 CREATE TABLE invoices_for_payments (
@@ -114,7 +114,7 @@ work_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 work_order_id INT,
 title VARCHAR(200) NOT NULL,
 unit_price DOUBLE NOT NULL,
-FOREIGN KEY (work_order_id) REFERENCES work_order (work_order_id) ON DELETE CASCADE
+FOREIGN KEY (work_order_id) REFERENCES work_orders (work_order_id) ON DELETE CASCADE
 );
 
 CREATE TABLE auto_parts (
@@ -127,7 +127,7 @@ supplier_name VARCHAR(200) NOT NULL,
 wholesale_unit_price DOUBLE NOT NULL,
 unit_retail_price DOUBLE NOT NULL,
 markup_amount DOUBLE NOT NULL,
-FOREIGN KEY (work_order_id) REFERENCES work_order (work_order_id) ON DELETE CASCADE
+FOREIGN KEY (work_order_id) REFERENCES work_orders (work_order_id) ON DELETE CASCADE
 );
 
 INSERT users (username, password)

@@ -14,7 +14,7 @@ import java.util.Date;
 public class ClientsOrganizations {
     private Integer clientOrganizationId;
     private String nameOfCompany;
-    private String legalAdress;
+    private String legalAddress;
     private String taxpayerNumber;
     private String registrationReasonCode;
     private String stateRegistrationNumber;
@@ -26,12 +26,12 @@ public class ClientsOrganizations {
     public ClientsOrganizations() {
     }
 
-    public ClientsOrganizations(Integer clientOrganizationId, String nameOfCompany, String legalAdress,
+    public ClientsOrganizations(Integer clientOrganizationId, String nameOfCompany, String legalAddress,
                                 String taxpayerNumber, String registrationReasonCode, String stateRegistrationNumber,
                                 String bankDetails, String agreementNumber, Date agreementDate, String mobile) {
         this.clientOrganizationId = clientOrganizationId;
         this.nameOfCompany = nameOfCompany;
-        this.legalAdress = legalAdress;
+        this.legalAddress = legalAddress;
         this.taxpayerNumber = taxpayerNumber;
         this.registrationReasonCode = registrationReasonCode;
         this.stateRegistrationNumber = stateRegistrationNumber;
@@ -59,12 +59,12 @@ public class ClientsOrganizations {
         return nameOfCompany;
     }
 
-    public void setLegalAdress(String legalAdress) {
-        this.legalAdress = legalAdress;
+    public void setLegalAddress(String legalAddress) {
+        this.legalAddress = legalAddress;
     }
 
-    public String getLegalAdress() {
-        return legalAdress;
+    public String getLegalAddress() {
+        return legalAddress;
     }
 
     public void setTaxpayerNumber(String taxpayerNumber) {

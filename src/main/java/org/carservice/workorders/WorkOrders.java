@@ -19,8 +19,8 @@ public class WorkOrders {
     private Integer employeePositionMasterCons;
     private Integer paymentOptionId;
     private Integer workOrderNumber;
-    private Date startdate;
-    private Date enddate;
+    private Date startDate;
+    private Date endDate;
     private Integer workQuantity;
     private double workAmount;
     private Integer autoPartQuantity;
@@ -35,7 +35,7 @@ public class WorkOrders {
 
     public WorkOrders(Integer workOrderId, Integer clientId, Integer carId, Integer employeePositionPerformer,
                       Integer employeePositionMasterCons, Integer paymentOptionId, Integer workOrderNumber,
-                      Date startdate, Date enddate, Integer workQuantity, double workAmount, Integer autoPartQuantity,
+                      Date startDate, Date endDate, Integer workQuantity, double workAmount, Integer autoPartQuantity,
                       double autoPartAmount, double discountOnWork, double totalCost, double wagePercentage,
                       String recommendation) {
         this.workOrderId = workOrderId;
@@ -45,8 +45,8 @@ public class WorkOrders {
         this.employeePositionMasterCons = employeePositionMasterCons;
         this.paymentOptionId = paymentOptionId;
         this.workOrderNumber = workOrderNumber;
-        this.startdate = startdate;
-        this.enddate = enddate;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.workQuantity = workQuantity;
         this.workAmount = workAmount;
         this.autoPartQuantity = autoPartQuantity;
@@ -115,20 +115,20 @@ public class WorkOrders {
         return workOrderNumber;
     }
 
-    public void setStartdate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
     public void setWorkQuantity(Integer workQuantity) {
