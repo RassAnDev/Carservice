@@ -1,0 +1,157 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+        xmlns="http://jasperreports.sourceforge.net/jasperreports"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+   http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+        name="report2" pageWidth="595" pageHeight="842"
+        columnWidth="555" leftMargin="20" rightMargin="20"
+        topMargin="20" bottomMargin="20">
+    <parameter name="createdBy" class="java.lang.String"/>
+    <field name="autoPartId" class="java.lang.Integer">
+        <fieldDescription>
+            <![CDATA[autoPartId]]>
+        </fieldDescription>
+    </field>
+    <field name="workOrderId" class="java.lang.Integer">
+        <fieldDescription>
+            <![CDATA[workOrderId]]>
+        </fieldDescription>
+    </field>
+    <field name="purchaseDate" class="java.util.Date">
+        <fieldDescription>
+            <![CDATA[purchaseDate]]>
+        </fieldDescription>
+    </field>
+    <field name="autoPartName" class="java.lang.String">
+        <fieldDescription>
+            <![CDATA[autoPartName]]>
+        </fieldDescription>
+    </field>
+    <field name="catalogueNumber" class="java.lang.String">
+        <fieldDescription>
+            <![CDATA[catalogueNumber]]>
+        </fieldDescription>
+    </field>
+    <field name="supplierName" class="java.lang.String">
+        <fieldDescription>
+            <![CDATA[supplierName]]>
+        </fieldDescription>
+    </field>
+    <field name="wholesaleUnitPrice" class="java.lang.Double">
+        <fieldDescription>
+            <![CDATA[wholesaleUnitPrice]]>
+        </fieldDescription>
+    </field>
+    <field name="unitRetailPrice" class="java.lang.Double">
+        <fieldDescription>
+            <![CDATA[unitRetailPrice]]>
+        </fieldDescription>
+    </field>
+    <field name="markupAmount" class="java.lang.Double">
+        <fieldDescription>
+            <![CDATA[markupAmount]]>
+        </fieldDescription>
+    </field>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="42" splitType="Stretch">
+            <staticText>
+                <reportElement x="64" y="0" width="481" height="42"/>
+                <textElement textAlignment="Center">
+                    <font size="20" isBold="true"/>
+                </textElement>
+                <text>
+                    <![CDATA[AutoParts Report]]>
+                </text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="61" splitType="Stretch">
+            <textField>
+                <reportElement x="456" y="21" width="99" height="20"/>
+                <textElement/>
+                <textFieldExpression>
+                    <![CDATA[$P{createdBy}]]>
+                </textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="398" y="21" width="58" height="20"/>
+                <textElement/>
+                <text><![CDATA[Created By:]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="50" height="15" />
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{autoPartId}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="200" y="0" width="100" height="15" />
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.Integer">
+                    <![CDATA[$F{workOrderId}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="300" y="0" width="100" height="15"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.Date">
+                    <![CDATA[$F{purchaseDate}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="500" y="0" width="100" height="15"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{autoPartName}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="600" y="0" width="100" height="15"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{catalogueNumber}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="700" y="0" width="100" height="15"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{supplierName}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="800" y="0" width="100" height="15"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{wholesaleUnitPrice}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="900" y="0" width="100" height="15"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{unitRetailPrice}]]>
+                </textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="1000" y="0" width="100" height="15"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression class="java.lang.Double">
+                    <![CDATA[$F{markupAmount}]]>
+                </textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>
