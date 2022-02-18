@@ -37,16 +37,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.11.0</version>
+        </dependency>
     </dependencies>
 
     <repositories>
         <repository>
-            <id>jasperreports</id>
-            <url>http://jasperreports.sourceforge.net/maven2</url>
-        </repository>
-        <repository>
-            <id>jaspersoft-third-party</id>
-            <url>http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/</url>
+            <id> jaspersoft-repo</id>
+            <url>https://jaspersoft.jfrog.io/jaspersoft/jaspersoft-repo</url>
         </repository>
     </repositories>
 
