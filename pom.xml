@@ -33,7 +33,23 @@
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.11.0</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id> jaspersoft-repo</id>
+            <url>https://jaspersoft.jfrog.io/jaspersoft/jaspersoft-repo</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

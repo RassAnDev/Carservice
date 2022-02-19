@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b86de9ef-dbbf-43c9-8758-37816cde98bf">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Data Adapter "/>
+	<style name="Default" isDefault="true" pdfFontName="ARIAL.TTF" pdfEncoding="Cp1251"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM auto_parts;]]>
+	</queryString>
+	<field name="autoPartId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="auto_part_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="auto_part_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="workOrderId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="work_order_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_order_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="purchaseDate" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.name" value="purchase_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="purchase_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="autoPartName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="auto_part_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="auto_part_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="catalogueNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="catalogue_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="catalogue_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="supplierName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="supplier_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="supplier_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="wholesaleUnitPrice" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="wholesale_unit_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="wholesale_unit_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="unitRetailPrice" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="unit_retail_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="unit_retail_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="markupAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="markup_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="markup_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<title>
+		<band height="398" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+			<textField>
+				<reportElement x="0" y="0" width="555" height="46" uuid="00247202-c723-4acc-8b67-19af3b258161"/>
+				<textFieldExpression><![CDATA[$F{autoPartId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="46" width="555" height="44" uuid="593c0019-e862-4cf0-b30e-2c711f754dab"/>
+				<textFieldExpression><![CDATA[$F{workOrderId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="90" width="555" height="44" uuid="7a1b5e62-7277-4e03-ac7b-47aca93305f5"/>
+				<textFieldExpression><![CDATA[$F{purchaseDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="134" width="555" height="44" uuid="6830edf9-5ecc-4f39-8d85-2558c3d6ead0"/>
+				<textFieldExpression><![CDATA[$F{autoPartName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="178" width="555" height="44" uuid="813d8a6d-3bef-4f1e-8164-67f5d6dc08d3"/>
+				<textFieldExpression><![CDATA[$F{catalogueNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="222" width="555" height="44" uuid="3f07f997-9919-453e-86f9-ed44f2078bc0"/>
+				<textFieldExpression><![CDATA[$F{supplierName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="266" width="555" height="44" uuid="9c6c3aee-81a2-4de5-910d-0ca1593b49b1"/>
+				<textFieldExpression><![CDATA[$F{wholesaleUnitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="310" width="555" height="44" uuid="22e8f655-9ff8-4133-b05a-77f7b7c05403"/>
+				<textFieldExpression><![CDATA[$F{unitRetailPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="354" width="555" height="44" uuid="efd71705-44fc-411b-95a8-87263d9a4de5"/>
+				<textFieldExpression><![CDATA[$F{markupAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>
