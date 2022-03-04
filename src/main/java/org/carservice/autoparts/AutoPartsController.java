@@ -77,44 +77,4 @@ public class AutoPartsController {
         service.delete(id);
     }
 
-    final Logger log = LoggerFactory.getLogger(this.getClass());
-    final ModelAndView model = new ModelAndView();
-
-    @GetMapping("/welcome")
-    public ModelAndView index() {
-        log.info("Showing the welcome page.");
-        model.setViewName("welcome");
-        return model;
-    }
-
-    @GetMapping("/view")
-    public ModelAndView viewReport() {
-        log.info("Preparing the PDF report via jasper framework.");
-        try {
-            createPdfReport(service.listAll());
-            log.info("File successfully saved at the given path.");
-        } catch(final Exception e) {
-            log.error("An error has occurred while preparing the PDF report.");
-            e.printStackTrace();
-        }
-        model.setViewName("welcome");
-        return model;
-    }
-
-    private void createPdfReport(final List<AutoParts> autoParts) throws JRException {
-        final InputStream stream = this.getClass().getResourceAsStream("/report.jrxml");
-
-        final JasperReport report = JasperCompileManager.compileReport(stream);
-
-        final JRBeanCollectionDataSource source  = new JRBeanCollectionDataSource(autoParts);
-
-        final Map<String, Object> parameters = new HashMap<>();
-        parameters.put("createdBy", "RassAnDev");
-
-        final JasperPrint print = JasperFillManager.fillReport(report, parameters, source);
-
-        final String filePath = "C:\\";
-
-        JasperExportManager.exportReportToPdfFile(print, filePath + "AutoPartsReport.pdf");
-    }
 }

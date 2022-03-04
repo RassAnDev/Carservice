@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73778c4d-fecf-4197-992a-45ff1683124e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Data Adapter "/>
+	<style name="Default" isDefault="true" pdfFontName="ARIAL.TTF" pdfEncoding="Cp1251"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT work_orders.*, cars.*, clients_individuals.*,
+clients_organizations.*, clients.*, employees.*, works.*,
+payments_options.*,auto_parts.auto_part_name, 
+auto_parts.catalogue_number, auto_parts.unit_retail_price
+FROM work_orders
+JOIN cars ON cars.car_id = work_orders.car_id
+JOIN auto_parts 
+ON auto_parts.work_order_id = work_orders.work_order_id
+JOIN clients
+ON clients.client_id = work_orders.client_id
+JOIN clients_individuals
+ON clients_individuals.client_individual_id 
+= clients.client_individual_id
+JOIN clients_organizations
+ON clients_organizations.client_organization_id 
+= clients.client_organization_id
+JOIN employees
+ON employees.employee_position_id = 
+work_orders.employee_position_performer OR 
+employees.employee_position_id = 
+work_orders.employee_position_master_cons
+JOIN works
+ON works.work_order_id = work_orders.work_order_id
+JOIN payments_options
+ON payments_options.payment_option_id = 
+work_orders.payment_option_id;]]>
+	</queryString>
+	<field name="workOrderId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="work_order_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_order_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="clientId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="carId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="car_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="car_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="employeePositionPerformer" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="employee_position_performer"/>
+		<property name="com.jaspersoft.studio.field.label" value="employee_position_performer"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="employeePositionMasterCons" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="employee_position_master_cons"/>
+		<property name="com.jaspersoft.studio.field.label" value="employee_position_master_cons"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="paymentOptionId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="payment_option_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="payment_option_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="workOrderNumber" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="work_order_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_order_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="startDate" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.name" value="startDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="startDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="endDate" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.name" value="endDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="endDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="workQuantity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="work_quantity"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_quantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="workAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="work_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="autoPartQuantity" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="auto_part_quantity"/>
+		<property name="com.jaspersoft.studio.field.label" value="auto_part_quantity"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="autoPartAmount" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="auto_part_amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="auto_part_amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="discountOnWork" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="discount_on_work"/>
+		<property name="com.jaspersoft.studio.field.label" value="discount_on_work"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="totalCost" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="total_cost"/>
+		<property name="com.jaspersoft.studio.field.label" value="total_cost"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="wagePercentage" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="wage_percentage"/>
+		<property name="com.jaspersoft.studio.field.label" value="wage_percentage"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="recommendation" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="recommendation"/>
+		<property name="com.jaspersoft.studio.field.label" value="recommendation"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	</field>
+	<field name="carId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="car_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="car_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="brand" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="brand"/>
+		<property name="com.jaspersoft.studio.field.label" value="brand"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="model" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="model"/>
+		<property name="com.jaspersoft.studio.field.label" value="model"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="licensePlate" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="license_plate"/>
+		<property name="com.jaspersoft.studio.field.label" value="license_plate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="yearOfIssue" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="year_of_issue"/>
+		<property name="com.jaspersoft.studio.field.label" value="year_of_issue"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="vinCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="vin_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="vin_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="engineVolume" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="engine_volume"/>
+		<property name="com.jaspersoft.studio.field.label" value="engine_volume"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="enginePower" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="engine_power"/>
+		<property name="com.jaspersoft.studio.field.label" value="engine_power"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="mileage" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="mileage"/>
+		<property name="com.jaspersoft.studio.field.label" value="mileage"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
+	</field>
+	<field name="clientIndividualId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_individual_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_individual_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	</field>
+	<field name="surname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="surname"/>
+		<property name="com.jaspersoft.studio.field.label" value="surname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="firstname"/>
+		<property name="com.jaspersoft.studio.field.label" value="firstname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	</field>
+	<field name="patronymic" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patronymic"/>
+		<property name="com.jaspersoft.studio.field.label" value="patronymic"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	</field>
+	<field name="mobile" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mobile"/>
+		<property name="com.jaspersoft.studio.field.label" value="mobile"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	</field>
+	<field name="clientOrganizationId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_organization_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_organization_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="nameOfCompany" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="name_of_company"/>
+		<property name="com.jaspersoft.studio.field.label" value="name_of_company"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="legalAddress" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="legal_adress"/>
+		<property name="com.jaspersoft.studio.field.label" value="legal_adress"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="taxpayerNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="taxpayer_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="taxpayer_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="registrationReasonCode" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="registration_reason_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="registration_reason_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="stateRegistrationNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="state_registration_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="state_registration_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="bankDetails" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="bank_details"/>
+		<property name="com.jaspersoft.studio.field.label" value="bank_details"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="agreementNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="agreement_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="agreement_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="agreementDate" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.name" value="agreement_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="agreement_date"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="mobile" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mobile"/>
+		<property name="com.jaspersoft.studio.field.label" value="mobile"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	</field>
+	<field name="clientId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
+	</field>
+	<field name="clientOrganizationId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_organization_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_organization_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
+	</field>
+	<field name="clientIndividualId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_individual_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_individual_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
+	</field>
+	<field name="employeePositionId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="employee_position_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="employee_position_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	</field>
+	<field name="surname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="surname"/>
+		<property name="com.jaspersoft.studio.field.label" value="surname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	</field>
+	<field name="firstname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="firstname"/>
+		<property name="com.jaspersoft.studio.field.label" value="firstname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	</field>
+	<field name="patronymic" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="patronymic"/>
+		<property name="com.jaspersoft.studio.field.label" value="patronymic"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	</field>
+	<field name="workId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="work_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	</field>
+	<field name="workOrderId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="work_order_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="work_order_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="title"/>
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	</field>
+	<field name="unitPrice" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="unit_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="unit_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	</field>
+	<field name="paymentOptionId" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="payment_option_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="payment_option_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payments_options"/>
+	</field>
+	<field name="cash" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cash"/>
+		<property name="com.jaspersoft.studio.field.label" value="cash"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payments_options"/>
+	</field>
+	<field name="cashless" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cashless"/>
+		<property name="com.jaspersoft.studio.field.label" value="cashless"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payments_options"/>
+	</field>
+	<field name="autoPartName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="auto_part_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="auto_part_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="catalogue_number" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="catalogue_number"/>
+		<property name="com.jaspersoft.studio.field.label" value="catalogue_number"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<field name="unitRetailPrice" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="unit_retail_price"/>
+		<property name="com.jaspersoft.studio.field.label" value="unit_retail_price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="219" splitType="Stretch">
+			<staticText>
+				<reportElement x="410" y="0" width="150" height="80" uuid="9dde1a34-0e3a-4a1e-a324-50c314cc367d"/>
+				<box>
+					<topPen lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Автоцентр                "V8 motors"   
+тел. 8-888-888-88-88]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="0" y="0" width="150" height="20" uuid="1f27042f-e2fd-4bf8-96b9-c024528f039d"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="1" y="0" width="88" height="20" uuid="87760167-3088-451e-a7d7-0eb105366c87"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Заказ-наряд №: ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="89" y="0" width="50" height="20" uuid="eb53bbed-2234-484d-9d2f-a6f95226fcbc"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{workOrderNumber}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="20" width="400" height="50" uuid="f409ac30-a207-40cb-816a-1f06850a52a9"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement stretchType="ElementGroupBottom" x="0" y="0" width="80" height="50" uuid="d3023a70-27c0-4b2e-ba87-e1ea1057ef7d"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Заказчик:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="90" y="1" width="100" height="20" uuid="b2b08c0d-043a-4ede-97c5-bb246ea71c5c"/>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="191" y="0" width="98" height="22" uuid="bdf4bd1f-acb6-4159-b540-7cc62bb69abc"/>
+					<textElement textAlignment="Left" verticalAlignment="Top"/>
+					<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="289" y="1" width="111" height="20" uuid="3798e638-dded-48b0-b705-83f1fb3df966"/>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+				</textField>
+				<textField textAdjust="StretchHeight">
+					<reportElement x="90" y="22" width="310" height="28" uuid="cbd37abc-d6e2-4f06-9d9e-46f6a73353d4"/>
+					<textFieldExpression><![CDATA[$F{nameOfCompany}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="70" width="400" height="40" uuid="0151847a-88f9-463f-beda-ea18bd13cf4a"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textField>
+					<reportElement x="91" y="1" width="120" height="20" uuid="a3e5d3de-e77a-43e1-9320-53d3c6b9b80a"/>
+					<box>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="91" y="21" width="120" height="18" uuid="100e2d4c-2f41-4fde-8172-2402e2c23cec"/>
+					<box>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Left"/>
+					<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="80" height="40" uuid="eb8f21d8-af28-4f37-a4b8-c1c328de2316"/>
+					<box>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Телефон:]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="0" y="110" width="400" height="20" uuid="160b6942-3317-4ef3-be3d-d548ab232de2"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="210" y="-40" width="79" height="40" uuid="9d9f7e23-1f89-466a-8b82-7d1971442904"/>
+					<box>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Автомобиль:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="289" y="-40" width="108" height="20" uuid="79b2c4f6-4839-4ebe-a6b0-c9ee27ce22e2"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{brand}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="289" y="-20" width="108" height="20" uuid="28cdc211-c7d2-4894-8ce4-537bc5df77c3"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="212" y="1" width="77" height="18" uuid="a1545ec6-51a9-4712-98ce-b9b98f062720"/>
+					<box>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Гос. номер:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="289" y="1" width="108" height="18" uuid="27648276-c170-44e3-90e9-41ac4d646702"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{licensePlate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="1" width="79" height="18" uuid="4b1cfba6-e4f6-484f-8da0-071d6c3d2d5d">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  VIN-код:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="90" y="0" width="121" height="20" uuid="8238355f-accc-4571-8b1c-0f060bc3f854"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{vinCode}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="0" y="130" width="400" height="58" uuid="975cc48f-47e6-4337-85c4-1bf0e512dbfb"/>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="240" y="0" width="80" height="18" uuid="98b23df0-c891-4b03-ae16-070c49379d6c"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ Год выпуска:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="320" y="0" width="79" height="18" uuid="13bf7558-b481-4f19-8345-4c2befc422b1"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{yearOfIssue}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="0" width="80" height="17" uuid="62e81323-710e-486d-9b41-aa426f5d7d26">
+						<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Объем/Мощн.:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="81" y="0" width="24" height="18" uuid="e89ae840-8503-4fdd-adac-3afa6afbb23a"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{engineVolume}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="118" y="0" width="22" height="18" uuid="d79705f9-09cc-4ea7-8f6d-d47fbe0b5f96"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{enginePower}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="105" y="0" width="13" height="18" uuid="180723ce-4186-467b-a05b-325347969c1f"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[/]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="140" y="0" width="44" height="18" uuid="25afaf2d-2b78-423b-a889-d34f80706bd5"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Пробег:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="184" y="0" width="56" height="18" uuid="df6005d0-7089-4bb1-83e8-2a0ddf76750f"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{mileage}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="18" width="80" height="41" uuid="302c456f-fe7e-4a50-941f-7da1648c9fe7">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Дата:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="81" y="18" width="69" height="19" uuid="0b17d0c8-3070-42c4-a1d0-9afeb20a9dfc"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[оформления]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="81" y="38" width="69" height="21" uuid="f51cdff5-857e-4d9e-9584-b59397f09ebb"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[исполнения]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="150" y="19" width="90" height="18" uuid="47f7855f-6878-4864-b275-62487dbf1a49"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="150" y="37" width="90" height="22" uuid="74bc6b4b-9d4d-4129-bbcd-63ec90968917"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{endDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="240" y="18" width="160" height="18" uuid="43e3c65d-9805-4ac0-bba6-b892dc1cdbb3"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Способ оплаты:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="240" y="37" width="80" height="22" uuid="8a6518a9-3318-4923-af23-35bc835ce1da"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{cash}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="320" y="37" width="80" height="22" uuid="5c16a725-03a2-43e7-ae08-a223e53bca6f"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{cashless}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="360" splitType="Stretch">
+			<frame>
+				<reportElement x="-3" y="10" width="559" height="330" uuid="52026a18-5039-44af-820e-07e970787895"/>
+				<staticText>
+					<reportElement x="-1" y="0" width="220" height="20" uuid="f9fe7047-a832-45e1-84f1-deb1fd48a82f"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ВЫПОЛНЕННЫЕ РАБОТЫ И УСЛУГИ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="-1" y="20" width="213" height="19" uuid="d4e5f2fd-8655-409a-9ef5-a95cad2e25bd"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Наименование работ, услуг]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="212" y="20" width="37" height="19" uuid="e403b4f7-29b9-4d57-bd36-d322fb47445d"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Кол-во]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="249" y="20" width="51" height="19" uuid="b88ea890-7b67-4f28-b7d7-f839733dd503"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Цена]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="300" y="20" width="60" height="19" uuid="1ed67abb-33da-49ab-b289-065acb5249fd"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Сумма]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="360" y="20" width="198" height="19" uuid="76c7154d-a8f5-475d-bbf7-17ee0a216ce3"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ФИО Исполнителя]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="-1" y="40" width="213" height="30" uuid="eccb5eeb-5131-4bd3-867e-4c2f740a5217"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="212" y="40" width="36" height="30" uuid="c75d2e30-7add-4e9f-86a5-1f1b969e7d56"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{workQuantity}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="249" y="40" width="51" height="30" uuid="32990cd5-47e5-4fe6-b0da-2be3bef1657e"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{unitPrice}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="300" y="40" width="60" height="30" uuid="5e003d1a-6b43-47c6-a847-1582ddeb9505"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{workAmount}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="360" y="40" width="59" height="30" uuid="b3c8e990-2c84-49de-8fb5-8c1712322e49"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="419" y="40" width="60" height="30" uuid="d2a24b7d-2782-49d1-be4b-4178af3138e0"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="480" y="40" width="78" height="30" uuid="344e13e3-6e2d-46a0-9269-9bbddd4b1b5a"/>
+					<box>
+						<pen lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="125" width="220" height="19" uuid="66fd39ec-5d9d-4033-aec2-6f4bcb76f4fb"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Наименование запасной части]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="370" y="125" width="42" height="19" uuid="32fd2848-e778-4f54-b84a-f7f5e7ce587b"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Кол-во]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="412" y="125" width="66" height="19" uuid="d9f8895a-9eb2-478b-bd10-f7e8d9f01fe0"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Цена]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="478" y="125" width="79" height="19" uuid="55feb92f-18aa-4772-af91-b62d852606d9"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Сумма]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="220" y="125" width="150" height="19" uuid="e14861ee-a232-49e9-a239-a92a7e22f865"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Каталожный номер]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="105" width="220" height="20" uuid="64cdc531-fbdf-46de-848f-c79c17961815"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[ЗАПАСНЫЕ ЧАСТИ И МАТЕРИАЛЫ]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="145" width="220" height="30" uuid="8a3e8ace-be55-4fcd-9450-5f101adfd331"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{autoPartName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="220" y="145" width="150" height="30" uuid="5fd5b5e3-a279-4916-8973-67155fecd08e"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{catalogue_number}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="370" y="145" width="42" height="30" uuid="7cb90aea-5844-46e0-8b1b-55d8d6694409"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{autoPartQuantity}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="412" y="145" width="66" height="30" uuid="5674f647-25c8-4f0b-9d67-e0ea0cede5ff"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{unitRetailPrice}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="478" y="145" width="78" height="30" uuid="3aa0c1f3-6590-4e96-81bf-24ea2975f34d"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{autoPartAmount}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="3" y="190" width="118" height="20" uuid="6a0f5a9b-0550-4766-8802-198d39f4f2df"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Скидка на работы (%):]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="121" y="190" width="100" height="20" uuid="40a75031-feb7-44b1-bba7-3531e346a73f"/>
+					<textFieldExpression><![CDATA[$F{discountOnWork}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="4" y="210" width="116" height="20" uuid="25173576-c1ca-432d-b536-a721c1bee350"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Итоговая сумма:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="121" y="210" width="99" height="20" uuid="5ed441e7-146d-4064-bd2c-9da59ccf6479"/>
+					<textFieldExpression><![CDATA[$F{totalCost}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="3" y="240" width="118" height="20" uuid="26bfef04-5eb2-4839-8cbf-9b0089b0da14"/>
+					<text><![CDATA[Мастер-консультант:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="121" y="240" width="71" height="20" uuid="1baa5db1-3903-4f9a-b0d3-5a2d5660f1f3"/>
+					<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="192" y="240" width="68" height="20" uuid="777b03df-163b-4721-97bd-744fd99ea9c1"/>
+					<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="260" y="240" width="69" height="20" uuid="a597979e-82e2-445e-99ca-9a1af161c15c"/>
+					<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="3" y="260" width="215" height="30" uuid="5b48d7ce-bb1f-4ada-b735-41a1b4df3a57"/>
+					<text><![CDATA[Подпись: _______________________________]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="3" y="300" width="89" height="30" uuid="0e2322d3-f192-4e91-99a9-ba0a9addfbf6"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Рекомендации:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="92" y="300" width="464" height="30" uuid="d4cc7fb6-520b-4864-81e4-24ce04724314"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{recommendation}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>
