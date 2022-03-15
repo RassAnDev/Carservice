@@ -1,326 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73778c4d-fecf-4197-992a-45ff1683124e">
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql Data Adapter "/>
 	<style name="Default" isDefault="true" pdfFontName="ARIAL.TTF" pdfEncoding="Cp1251"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT work_orders.*, cars.*, clients_individuals.*,
-clients_organizations.*, clients.*, employees.*, works.*,
-payments_options.*,auto_parts.auto_part_name, 
-auto_parts.catalogue_number, auto_parts.unit_retail_price
-FROM work_orders
-JOIN cars ON cars.car_id = work_orders.car_id
-JOIN auto_parts 
-ON auto_parts.work_order_id = work_orders.work_order_id
-JOIN clients
-ON clients.client_id = work_orders.client_id
-JOIN clients_individuals
-ON clients_individuals.client_individual_id 
-= clients.client_individual_id
-JOIN clients_organizations
-ON clients_organizations.client_organization_id 
-= clients.client_organization_id
-JOIN employees
-ON employees.employee_position_id = 
-work_orders.employee_position_performer OR 
-employees.employee_position_id = 
-work_orders.employee_position_master_cons
-JOIN works
-ON works.work_order_id = work_orders.work_order_id
-JOIN payments_options
-ON payments_options.payment_option_id = 
-work_orders.payment_option_id;]]>
-	</queryString>
+
 	<field name="workOrderId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="work_order_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="work_order_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="clientId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="client_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="client_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="carId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="car_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="car_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="employeePositionPerformer" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="employee_position_performer"/>
-		<property name="com.jaspersoft.studio.field.label" value="employee_position_performer"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="employeePositionMasterCons" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="employee_position_master_cons"/>
-		<property name="com.jaspersoft.studio.field.label" value="employee_position_master_cons"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="paymentOptionId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="payment_option_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="payment_option_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="workOrderNumber" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="work_order_number"/>
-		<property name="com.jaspersoft.studio.field.label" value="work_order_number"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
-	<field name="startDate" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.name" value="startdate"/>
-		<property name="com.jaspersoft.studio.field.label" value="startdate"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	<field name="startDate" class="java.util.Date">
 	</field>
-	<field name="endDate" class="java.sql.Timestamp">
-		<property name="com.jaspersoft.studio.field.name" value="enddate"/>
-		<property name="com.jaspersoft.studio.field.label" value="enddate"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
+	<field name="endDate" class="java.util.Date">
 	</field>
 	<field name="workQuantity" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="work_quantity"/>
-		<property name="com.jaspersoft.studio.field.label" value="work_quantity"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="workAmount" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="work_amount"/>
-		<property name="com.jaspersoft.studio.field.label" value="work_amount"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="autoPartQuantity" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="auto_part_quantity"/>
-		<property name="com.jaspersoft.studio.field.label" value="auto_part_quantity"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="autoPartAmount" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="auto_part_amount"/>
-		<property name="com.jaspersoft.studio.field.label" value="auto_part_amount"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="discountOnWork" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="discount_on_work"/>
-		<property name="com.jaspersoft.studio.field.label" value="discount_on_work"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="totalCost" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="total_cost"/>
-		<property name="com.jaspersoft.studio.field.label" value="total_cost"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="wagePercentage" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="wage_percentage"/>
-		<property name="com.jaspersoft.studio.field.label" value="wage_percentage"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
 	</field>
 	<field name="recommendation" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="recommendation"/>
-		<property name="com.jaspersoft.studio.field.label" value="recommendation"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="work_orders"/>
-	</field>
-	<field name="carId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="car_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="car_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="brand" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="brand"/>
-		<property name="com.jaspersoft.studio.field.label" value="brand"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="model" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="model"/>
-		<property name="com.jaspersoft.studio.field.label" value="model"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="licensePlate" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="license_plate"/>
-		<property name="com.jaspersoft.studio.field.label" value="license_plate"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="yearOfIssue" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="year_of_issue"/>
-		<property name="com.jaspersoft.studio.field.label" value="year_of_issue"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="vinCode" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="vin_code"/>
-		<property name="com.jaspersoft.studio.field.label" value="vin_code"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="engineVolume" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="engine_volume"/>
-		<property name="com.jaspersoft.studio.field.label" value="engine_volume"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="enginePower" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="engine_power"/>
-		<property name="com.jaspersoft.studio.field.label" value="engine_power"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="mileage" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="mileage"/>
-		<property name="com.jaspersoft.studio.field.label" value="mileage"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="cars"/>
 	</field>
 	<field name="clientIndividualId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="client_individual_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="client_individual_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
 	</field>
-	<field name="surname" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="surname"/>
-		<property name="com.jaspersoft.studio.field.label" value="surname"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	<field name="clientIndividualSurname" class="java.lang.String">
 	</field>
-	<field name="firstname" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="firstname"/>
-		<property name="com.jaspersoft.studio.field.label" value="firstname"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	<field name="clientIndividualFirstname" class="java.lang.String">
 	</field>
-	<field name="patronymic" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="patronymic"/>
-		<property name="com.jaspersoft.studio.field.label" value="patronymic"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	<field name="clientIndividualPatronymic" class="java.lang.String">
 	</field>
-	<field name="mobile" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="mobile"/>
-		<property name="com.jaspersoft.studio.field.label" value="mobile"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_individuals"/>
+	<field name="clientIndividualMobile" class="java.lang.String">
 	</field>
 	<field name="clientOrganizationId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="client_organization_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="client_organization_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="nameOfCompany" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="name_of_company"/>
-		<property name="com.jaspersoft.studio.field.label" value="name_of_company"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="legalAddress" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="legal_adress"/>
-		<property name="com.jaspersoft.studio.field.label" value="legal_adress"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="taxpayerNumber" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="taxpayer_number"/>
-		<property name="com.jaspersoft.studio.field.label" value="taxpayer_number"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="registrationReasonCode" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="registration_reason_code"/>
-		<property name="com.jaspersoft.studio.field.label" value="registration_reason_code"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="stateRegistrationNumber" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="state_registration_number"/>
-		<property name="com.jaspersoft.studio.field.label" value="state_registration_number"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="bankDetails" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="bank_details"/>
-		<property name="com.jaspersoft.studio.field.label" value="bank_details"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="agreementNumber" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="agreement_number"/>
-		<property name="com.jaspersoft.studio.field.label" value="agreement_number"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
 	<field name="agreementDate" class="java.util.Date">
-		<property name="com.jaspersoft.studio.field.name" value="agreement_date"/>
-		<property name="com.jaspersoft.studio.field.label" value="agreement_date"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
 	</field>
-	<field name="mobile" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="mobile"/>
-		<property name="com.jaspersoft.studio.field.label" value="mobile"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients_organizations"/>
+	<field name="clientOrganizationMobile" class="java.lang.String">
 	</field>
-	<field name="clientId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="client_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="client_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
+	<field name="clientsClientId" class="java.lang.Integer">
 	</field>
-	<field name="clientOrganizationId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="client_organization_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="client_organization_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
+	<field name="clientsClientOrganizationId" class="java.lang.Integer">
 	</field>
-	<field name="clientIndividualId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="client_individual_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="client_individual_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
+	<field name="clientsClientIndividualId" class="java.lang.Integer">
 	</field>
 	<field name="employeePositionId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="employee_position_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="employee_position_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
 	</field>
-	<field name="surname" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="surname"/>
-		<property name="com.jaspersoft.studio.field.label" value="surname"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	<field name="employeeSurname" class="java.lang.String">
 	</field>
-	<field name="firstname" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="firstname"/>
-		<property name="com.jaspersoft.studio.field.label" value="firstname"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	<field name="employeeFirstname" class="java.lang.String">
 	</field>
-	<field name="patronymic" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="patronymic"/>
-		<property name="com.jaspersoft.studio.field.label" value="patronymic"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="employees"/>
+	<field name="employeePatronymic" class="java.lang.String">
 	</field>
 	<field name="workId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="work_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="work_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
 	</field>
-	<field name="workOrderId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="work_order_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="work_order_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	<field name="worksWorkOrderId" class="java.lang.Integer">
 	</field>
-	<field name="title" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="title"/>
-		<property name="com.jaspersoft.studio.field.label" value="title"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	<field name="workTitle" class="java.lang.String">
 	</field>
-	<field name="unitPrice" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="unit_price"/>
-		<property name="com.jaspersoft.studio.field.label" value="unit_price"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="works"/>
+	<field name="workUnitPrice" class="java.lang.Double">
 	</field>
-	<field name="paymentOptionId" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="payment_option_id"/>
-		<property name="com.jaspersoft.studio.field.label" value="payment_option_id"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="payments_options"/>
+	<field name="paymentsOptionsPaymentOptionId" class="java.lang.Integer">
 	</field>
 	<field name="cash" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="cash"/>
-		<property name="com.jaspersoft.studio.field.label" value="cash"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="payments_options"/>
 	</field>
 	<field name="cashless" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="cashless"/>
-		<property name="com.jaspersoft.studio.field.label" value="cashless"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="payments_options"/>
 	</field>
 	<field name="autoPartName" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="auto_part_name"/>
-		<property name="com.jaspersoft.studio.field.label" value="auto_part_name"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
 	</field>
-	<field name="catalogue_number" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="catalogue_number"/>
-		<property name="com.jaspersoft.studio.field.label" value="catalogue_number"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
+	<field name="catalogueNumber" class="java.lang.String">
 	</field>
 	<field name="unitRetailPrice" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.name" value="unit_retail_price"/>
-		<property name="com.jaspersoft.studio.field.label" value="unit_retail_price"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="auto_parts"/>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -400,17 +195,17 @@ work_orders.payment_option_id;]]>
 				<textField>
 					<reportElement x="90" y="1" width="100" height="20" uuid="b2b08c0d-043a-4ede-97c5-bb246ea71c5c"/>
 					<textElement textAlignment="Left"/>
-					<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clientIndividualSurname}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="191" y="0" width="98" height="22" uuid="bdf4bd1f-acb6-4159-b540-7cc62bb69abc"/>
 					<textElement textAlignment="Left" verticalAlignment="Top"/>
-					<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clientIndividualFirstname}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="289" y="1" width="111" height="20" uuid="3798e638-dded-48b0-b705-83f1fb3df966"/>
 					<textElement textAlignment="Left"/>
-					<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clientIndividualPatronymic}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement x="90" y="22" width="310" height="28" uuid="cbd37abc-d6e2-4f06-9d9e-46f6a73353d4"/>
@@ -431,7 +226,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid"/>
 					</box>
 					<textElement textAlignment="Left"/>
-					<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clientIndividualMobile}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="91" y="21" width="120" height="18" uuid="100e2d4c-2f41-4fde-8172-2402e2c23cec"/>
@@ -439,7 +234,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid"/>
 					</box>
 					<textElement textAlignment="Left"/>
-					<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clientOrganizationMobile}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="0" width="80" height="40" uuid="eb8f21d8-af28-4f37-a4b8-c1c328de2316"/>
@@ -785,7 +580,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{workTitle}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="212" y="40" width="36" height="30" uuid="c75d2e30-7add-4e9f-86a5-1f1b969e7d56"/>
@@ -809,7 +604,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA[$F{unitPrice}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{workUnitPrice}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="300" y="40" width="60" height="30" uuid="5e003d1a-6b43-47c6-a847-1582ddeb9505"/>
@@ -833,7 +628,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{employeeSurname}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="419" y="40" width="60" height="30" uuid="d2a24b7d-2782-49d1-be4b-4178af3138e0"/>
@@ -845,7 +640,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{employeeFirstname}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="480" y="40" width="78" height="30" uuid="344e13e3-6e2d-46a0-9269-9bbddd4b1b5a"/>
@@ -857,7 +652,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{employeePatronymic}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="125" width="220" height="19" uuid="66fd39ec-5d9d-4033-aec2-6f4bcb76f4fb"/>
@@ -951,7 +746,7 @@ work_orders.payment_option_id;]]>
 						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					</box>
 					<textElement textAlignment="Center"/>
-					<textFieldExpression><![CDATA[$F{catalogue_number}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{catalogueNumber}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="370" y="145" width="42" height="30" uuid="7cb90aea-5844-46e0-8b1b-55d8d6694409"/>
@@ -1014,15 +809,15 @@ work_orders.payment_option_id;]]>
 				</staticText>
 				<textField>
 					<reportElement x="121" y="240" width="71" height="20" uuid="1baa5db1-3903-4f9a-b0d3-5a2d5660f1f3"/>
-					<textFieldExpression><![CDATA[$F{surname}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{employeeSurname}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="192" y="240" width="68" height="20" uuid="777b03df-163b-4721-97bd-744fd99ea9c1"/>
-					<textFieldExpression><![CDATA[$F{firstname}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{employeeFirstname}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="260" y="240" width="69" height="20" uuid="a597979e-82e2-445e-99ca-9a1af161c15c"/>
-					<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{employeePatronymic}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="3" y="260" width="215" height="30" uuid="5b48d7ce-bb1f-4ada-b735-41a1b4df3a57"/>

@@ -12,10 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Create the org.carservice.workorders.WorkOrdersController class.
@@ -83,6 +80,7 @@ public class WorkOrdersController {
 
     final Logger log = LoggerFactory.getLogger(this.getClass());
     final ModelAndView model = new ModelAndView();
+    List<WorkOrderReport> wO;
 
     // Method to display the index page of the application
     @GetMapping("/welcome")
@@ -97,7 +95,7 @@ public class WorkOrdersController {
     public ModelAndView viewReport() {
         log.info("Preparing the pdf report via jasper.");
         try {
-            createPdfReport(service.listAll());
+            createPdfReport(wO);
             log.info("File successfully saved at the given path.");
         } catch(final Exception e) {
             log.error("An error has occurred while preparing the workorder pdf report.");
@@ -108,7 +106,7 @@ public class WorkOrdersController {
     }
 
     // Method to create the pdf file using the workorder list datasource.
-    private void createPdfReport(final List<WorkOrders> workOrders) throws JRException {
+    private void createPdfReport(final List<WorkOrderReport> workOrders) throws JRException {
         // Fetching the .jrxml file from the resources folder.
         final InputStream stream = this.getClass().getResourceAsStream("/workorder.jrxml");
 
